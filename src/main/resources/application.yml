@@ -1,0 +1,59 @@
+logging:
+  file:
+    name: logs/sboard.log
+  level:
+    root: info
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml
+server:
+  port: 8080
+  servlet:
+    context-path: /sboard
+spring:
+  application:
+    name: sboard
+    version: ${version}
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: 1234
+    url: jdbc:oracle:thin:@//43.202.165.0:1522/XE
+    username: sboard
+  devtools:
+    livereload:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: alswnstl23@gmail.com
+    password: dybfhmzfoxcpzlpq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 5000
+          starttls:
+            required: true
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
+
+  security:
+    user:
+      name: user
+      password: 1234
+      roles: ADMIN
+
+  servlet:
+    multipart:
+      location: upload
+      max-file-size: 10MB

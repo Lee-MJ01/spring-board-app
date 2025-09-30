@@ -1,0 +1,28 @@
+<div th:replace="~{user/_head.html}"></div>
+<main id="user">
+    <section class="terms">
+        <h2 class="tit">사이트 이용약관</h2>
+        <table border="1">
+            <tr>
+                <td>
+                    <textarea name="terms">[[${termsDTO.terms}]]</textarea>
+                    <label><input type="checkbox" class="terms">&nbsp;동의합니다.</label>
+                </td>
+            </tr>
+        </table>
+        <h2 class="tit">개인정보 취급방침</h2>
+        <table border="1">
+            <tr>
+                <td>
+                    <textarea name="privacy">[[${termsDTO.privacy}]]</textarea>
+                    <label><input type="checkbox" class="privacy">&nbsp;동의합니다.</label>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <a th:href="@{/user/login}" class="btn btnCancel">취소</a>
+            <a th:href="@{/user/register}" class="btn btnNext">다음</a>
+        </div>
+    </section>
+</main>
+<div th:replace="~{user/_tail.html}"></div>
