@@ -5,15 +5,18 @@
 
 <mapper namespace="kr.co.sboard.mapper.CommentMapper">
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="cno">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="cno" keyColumn="CNO">
         INSERT INTO TB_COMMENT
             (ANO, CONTENT, WRITER, REG_IP, WDATE)
         VALUES
-            (#{ano},#{content},#{writer},#{reg_ip},SYSDATE)
+            (#{ano},#{content},#{writer},#{reg_ip}, SYSDATE)
     </insert>
 
     <select id="select" resultType="kr.co.sboard.dto.CommentDTO">
-        select * from TB_COMMENT where cno=#{cno}
+        select C.*, U.nick from TB_COMMENT C
+        JOIN TB_USER U
+        ON C.WRITER = U.USID
+        where cno=#{cno}
     </select>
 
     <select id="selectAll" resultType="kr.co.sboard.dto.CommentDTO">
