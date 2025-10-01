@@ -4,7 +4,7 @@
         <nav>
             <h1>
                 전체 글목록
-                <span>1012건</span>
+                <span>[[${pageResponseDTO.total}]]건</span>
             </h1>
             <form th:action="@{/article/search}" method="get">
                 <select name="searchType">
@@ -27,7 +27,7 @@
             </tr>
             <tr th:each="article, stat:${pageResponseDTO.dtoList}">
                 <td>[[${pageResponseDTO.startNo - stat.index}]]</td>
-                <td><a th:href="@{/article/view}">[[${article.title}]]&nbsp;&#91;[[${article.comment_cnt}]]&#93;</a></td>
+                <td><a th:href="@{/article/view(ano=${article.ano})}">[[${article.title}]]&nbsp;&#91;[[${article.comment_cnt}]]&#93;</a></td>
                 <td>[[${article.nick}]]</td>
                 <td>[[${article.wdate}]]</td>
                 <td>[[${article.hit_cnt}]]</td>

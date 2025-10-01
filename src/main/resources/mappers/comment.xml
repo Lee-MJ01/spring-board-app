@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.sboard.mapper.CommentMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="cno">
+        INSERT INTO TB_COMMENT
+            (ANO, CONTENT, WRITER, REG_IP, WDATE)
+        VALUES
+            (#{ano},#{content},#{writer},#{reg_ip},SYSDATE)
+    </insert>
+
+    <select id="select" resultType="kr.co.sboard.dto.CommentDTO">
+        select * from TB_COMMENT where cno=#{cno}
+    </select>
+
+    <select id="selectAll" resultType="kr.co.sboard.dto.CommentDTO">
+        select C.*, U.nick from TB_COMMENT C
+        JOIN TB_USER U
+        ON C.WRITER = U.USID
+        where ano=#{ano}
+    </select>
+
+    <update id="update">
+        update TB_COMMENT set content=#{content} where cno=#{cno}
+    </update>
+
+    <delete id="delete">
+        delete from TB_COMMENT where cno=#{cno}
+    </delete>
+
+</mapper>
